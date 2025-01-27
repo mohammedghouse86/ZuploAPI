@@ -2983,7 +2983,7 @@
           ]
         }
       },
-      "/v1/deployments/{deploymentName}/deploy": {
+      "/v1/deployments/{deploymentName}/$redeploy": {
         "post": {
           "tags": [
             "Deployments"
@@ -3346,7 +3346,7 @@
           ]
         }
       },
-      "/v1/metering/{bucketId}/plans": {
+      "/v1/metering/accounts/{accountName}/buckets/{bucketId}/plans": {
         "get": {
           "tags": [
             "Metering - Plans"
