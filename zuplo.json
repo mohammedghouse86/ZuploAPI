@@ -7043,14 +7043,16 @@
                   "title",
                   "status"
                 ],
-                "examples": [
-                  {
-                    "type": "https://httpproblems.com/http-status/429",
-                    "title": "Too Many Requests",
-                    "status": 429,
-                    "instance": "/foo/bar"
+                "examples": {
+                  "tooManyRequestsExample": {
+                    "value": {
+                      "type": "https://httpproblems.com/http-status/429",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "instance": "/foo/bar"
+                    }
                   }
-                ],
+                },
                 "properties": {
                   "type": {
                     "type": "string",
@@ -7063,7 +7065,7 @@
                     "description": "A short, human-readable summary of the problem."
                   },
                   "status": {
-                    "type": "number",
+                    "type": "integer",
                     "example": 429,
                     "description": "The HTTP status code."
                   },
@@ -7087,14 +7089,16 @@
                   "title",
                   "status"
                 ],
-                "examples": [
-                  {
-                    "type": "https://httpproblems.com/http-status/429",
-                    "title": "Too Many Requests",
-                    "status": 429,
-                    "instance": "/foo/bar"
+                "examples": {
+                  "tooManyRequestsExample": {
+                    "value": {
+                      "type": "https://httpproblems.com/http-status/429",
+                      "title": "Too Many Requests",
+                      "status": 429,
+                      "instance": "/foo/bar"
+                    }
                   }
-                ],
+                },
                 "properties": {
                   "type": {
                     "type": "string",
@@ -7107,7 +7111,7 @@
                     "description": "A short, human-readable summary of the problem."
                   },
                   "status": {
-                    "type": "number",
+                    "type": "integer",
                     "example": 429,
                     "description": "The HTTP status code."
                   },
