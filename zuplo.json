@@ -510,7 +510,7 @@
           ]
         }
       },
-      "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers": {
+      "/v1/api-keys/{bucketId}/consumers": {
         "get": {
           "tags": [
             "API Keys - Consumers"
@@ -720,7 +720,7 @@
           ]
         }
       },
-      "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}": {
+      "/v1/api-keys/{bucketId}/consumers/{consumerName}": {
         "get": {
           "tags": [
             "API Keys - Consumers"
@@ -3498,7 +3498,7 @@
           ]
         }
       },
-      "/v1/metering/{bucketId}/plans/{planId}": {
+      "/v1/metering/accounts/{accountName}/buckets/{bucketId}/plans/{planId}": {
         "get": {
           "tags": [
             "Metering - Plans"
