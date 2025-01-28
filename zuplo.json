@@ -92,7 +92,7 @@
       "/v1/accounts/{accountName}/key-buckets": {
         "get": {
           "tags": [
-            "API Keys - Buckets"
+            "accounts"
           ],
           "operationId": "ApiKeyBucketsService_list",
           "summary": "Lists buckets",
@@ -250,7 +250,7 @@
       "/v1/accounts/{accountName}/key-buckets/{bucketName}": {
         "get": {
           "tags": [
-            "API Keys - Buckets"
+            "accounts", "key-buckets"
           ],
           "operationId": "ApiKeyBucketsService_read",
           "summary": "Gets a bucket",
@@ -513,7 +513,7 @@
       "/v1/api-keys/{bucketId}/consumers": {
         "get": {
           "tags": [
-            "API Keys - Consumers"
+            "api-keys"
           ],
           "operationId": "ApiKeyConsumersService_list",
           "summary": "Lists consumers",
@@ -723,7 +723,7 @@
       "/v1/api-keys/{bucketId}/consumers/{consumerName}": {
         "get": {
           "tags": [
-            "API Keys - Consumers"
+            "api-keys", "consumers"
           ],
           "operationId": "ApiKeyConsumersService_read",
           "summary": "Gets a consumer",
@@ -827,7 +827,7 @@
         },
         "patch": {
           "tags": [
-            "API Keys - Consumers"
+            "api-keys", "consumers"
           ],
           "operationId": "ApiKeyConsumersService_update",
           "summary": "Updates a consumer",
@@ -929,7 +929,7 @@
         },
         "delete": {
           "tags": [
-            "API Keys - Consumers"
+            "api-keys", "consumers"
           ],
           "operationId": "ApiKeyConsumersService_delete",
           "summary": "Deletes a consumer",
@@ -1016,7 +1016,7 @@
       "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}/keys": {
         "get": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers"
           ],
           "operationId": "ApiKeyKeysService_list",
           "summary": "Lists keys",
@@ -1123,7 +1123,7 @@
         },
         "post": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers"
           ],
           "operationId": "ApiKeyKeysService_create",
           "summary": "Creates an API key",
@@ -1214,7 +1214,7 @@
       "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}/keys/$bulk": {
         "post": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers"
           ],
           "operationId": "ApiKeyKeysService_bulkCreate",
           "summary": "Creates multiple API keys",
@@ -1305,7 +1305,7 @@
       "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}/keys/{keyId}": {
         "get": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers", "keys"
           ],
           "operationId": "ApiKeyKeysService_get",
           "summary": "Gets an API key",
@@ -1403,7 +1403,7 @@
         },
         "patch": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers", "keys"
           ],
           "operationId": "ApiKeyKeysService_update",
           "summary": "Updates an API key",
@@ -1508,7 +1508,7 @@
         },
         "delete": {
           "tags": [
-            "API Keys - Keys"
+            "accounts", "key-buckets", "consumers", "keys"
           ],
           "operationId": "ApiKeyKeysService_delete",
           "summary": "Deletes an API key",
@@ -1598,7 +1598,7 @@
       "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}/roll-key": {
         "post": {
           "tags": [
-            "API Keys - Consumers"
+            "accounts", "key-buckets", "consumers"
           ],
           "operationId": "ApiKeyConsumersService_rollKey",
           "summary": "Roll consumer keys",
@@ -1695,7 +1695,8 @@
       "/v1/accounts/{accountName}/projects/{projectName}/branches/{branchName}/variables": {
         "post": {
           "tags": [
-            "Variables"
+            "accounts", "projects", "branches"
+
           ],
           "operationId": "VariablesService_create",
           "summary": "Creates a variable",
@@ -1783,7 +1784,7 @@
       "/v1/accounts/{accountName}/projects/{projectName}/branches/{branchName}/variables/{variableName}": {
         "patch": {
           "tags": [
-            "Variables"
+            "accounts", "projects", "branches", "variables"
           ],
           "operationId": "VariablesService_update",
           "summary": "Updates a variable",
@@ -1884,7 +1885,7 @@
       "/v1/accounts/{accountName}/projects/{projectName}/deployment-status/{statusId}": {
         "get": {
           "tags": [
-            "Deployments"
+            "accounts", "projects", "deployment-status"
           ],
           "operationId": "V1_deploymentStatus",
           "summary": "Gets a deployment status",
@@ -1978,7 +1979,7 @@
       "/v1/accounts/{accountName}/projects/{projectName}/deployments": {
         "get": {
           "tags": [
-            "Deployments"
+            "accounts", "projects"
           ],
           "operationId": "DeploymentsService_list",
           "summary": "Lists deployments",
@@ -2053,7 +2054,7 @@
       "/v1/accounts/{accountName}/tunnels": {
         "get": {
           "tags": [
-            "Tunnels"
+            "accounts"
           ],
           "operationId": "TunnelService_list",
           "summary": "Lists tunnels",
@@ -2123,7 +2124,7 @@
         },
         "post": {
           "tags": [
-            "Tunnels"
+            "accounts"
           ],
           "operationId": "TunnelService_create",
           "summary": "Creates a tunnel",
@@ -2205,7 +2206,7 @@
       "/v1/accounts/{accountName}/tunnels/{tunnelId}": {
         "get": {
           "tags": [
-            "Tunnels"
+            "accounts", "tunnels"
           ],
           "operationId": "TunnelService_read",
           "summary": "Gets a tunnel",
@@ -2288,7 +2289,7 @@
         },
         "delete": {
           "tags": [
-            "Tunnels"
+            "accounts", "tunnels"
           ],
           "operationId": "TunnelService_delete",
           "summary": "Deletes a tunnel",
@@ -2373,7 +2374,7 @@
       "/v1/accounts/{accountName}/tunnels/{tunnelId}/$rotate-token": {
         "post": {
           "tags": [
-            "Tunnels"
+            "accounts", "tunnels"
           ],
           "operationId": "TunnelService_update",
           "summary": "Rotates the token",
@@ -2458,7 +2459,7 @@
       "/v1/accounts/{accountName}/tunnels/{tunnelId}/provisioning-operations/{operationId}": {
         "get": {
           "tags": [
-            "Tunnel Services"
+            "accounts", "tunnels", "provisioning-operations"
           ],
           "operationId": "TunneledServicesService_getProvisioningStatus",
           "summary": "Gets a provisioning status",
@@ -2536,7 +2537,7 @@
       "/v1/accounts/{accountName}/tunnels/{tunnelId}/services-configuration": {
         "get": {
           "tags": [
-            "Tunnel Services"
+            "accounts", "tunnels"
           ],
           "operationId": "TunneledServicesService_getServiceConfiguration",
           "summary": "Gets a service configuration",
@@ -2609,7 +2610,7 @@
         },
         "put": {
           "tags": [
-            "Tunnel Services"
+            "accounts", "tunnels"
           ],
           "operationId": "TunneledServicesService_putServiceConfiguration",
           "summary": "Configures tunnel services",
@@ -2694,7 +2695,7 @@
       "/v1/accounts/{accountName}/tunnels/{tunnelId}/teardown-operations/{operationId}": {
         "get": {
           "tags": [
-            "Tunnels"
+            "accounts", "tunnels", "teardown-operations"
           ],
           "operationId": "TunnelService_getProvisioningStatus",
           "summary": "Gets a teardown status",
@@ -2772,7 +2773,7 @@
       "/v1/deployments/sources": {
         "post": {
           "tags": [
-            "Deployments"
+            "deployments"
           ],
           "operationId": "DeployService_sources",
           "summary": "Upload deployment source",
@@ -2851,7 +2852,7 @@
       "/v1/deployments/{deploymentName}": {
         "get": {
           "tags": [
-            "Deployments"
+            "deployments"
           ],
           "operationId": "DeploymentsService_read",
           "summary": "Get a deployment",
@@ -2921,7 +2922,7 @@
         },
         "delete": {
           "tags": [
-            "Deployments"
+            "deployments"
           ],
           "operationId": "DeploymentsService_delete",
           "summary": "Deletes a deployment",
@@ -2986,7 +2987,7 @@
       "/v1/deployments/{deploymentName}/$redeploy": {
         "post": {
           "tags": [
-            "Deployments"
+            "deployments"
           ],
           "operationId": "DeployService_redeploy",
           "summary": "Re-deploy a deployment",
@@ -3058,7 +3059,7 @@
       "/v1/metering": {
         "get": {
           "tags": [
-            "Metering - Buckets"
+            "metering"
           ],
           "operationId": "MeteringBucketsOperations_list",
           "summary": "Lists metering buckets",
@@ -3125,7 +3126,7 @@
         },
         "post": {
           "tags": [
-            "Metering - Buckets"
+            "metering"
           ],
           "operationId": "MeteringBucketsOperations_create",
           "summary": "Creates a bucket",
@@ -3194,7 +3195,7 @@
       "/v1/metering/{bucketId}": {
         "get": {
           "tags": [
-            "Metering - Buckets"
+            "metering"
           ],
           "operationId": "MeteringBucketsOperations_read",
           "summary": "Gets a bucket",
@@ -3274,7 +3275,7 @@
         },
         "delete": {
           "tags": [
-            "Metering - Buckets"
+            "metering"
           ],
           "operationId": "MeteringBucketsOperations_delete",
           "summary": "Deletes a bucket",
@@ -3349,7 +3350,7 @@
       "/v1/metering/accounts/{accountName}/buckets/{bucketId}/plans": {
         "get": {
           "tags": [
-            "Metering - Plans"
+            "accounts", "buckets"
           ],
           "operationId": "MeteringPlansOperations_list",
           "summary": "Lists plans",
@@ -3419,7 +3420,7 @@
         },
         "post": {
           "tags": [
-            "Metering - Plans"
+            "accounts", "buckets"
           ],
           "operationId": "MeteringPlansOperations_create",
           "summary": "Creates a plan",
@@ -3501,7 +3502,7 @@
       "/v1/metering/accounts/{accountName}/buckets/{bucketId}/plans/{planId}": {
         "get": {
           "tags": [
-            "Metering - Plans"
+            "accounts", "buckets", "plans"
           ],
           "operationId": "MeteringPlansOperations_read",
           "summary": "Gets a plan",
@@ -3574,7 +3575,7 @@
         },
         "patch": {
           "tags": [
-            "Metering - Plans"
+            "accounts", "buckets", "plans"
           ],
           "operationId": "MeteringPlansOperations_update",
           "summary": "Updates a plan",
@@ -3657,7 +3658,7 @@
         },
         "delete": {
           "tags": [
-            "Metering - Plans"
+            "accounts", "buckets", "plans"
           ],
           "operationId": "MeteringPlansOperations_delete",
           "summary": "Deletes a plan",
@@ -3735,7 +3736,7 @@
       "/v1/metering/{bucketId}/subscriptions": {
         "get": {
           "tags": [
-            "Metering - Subscriptions"
+            "metering"
           ],
           "operationId": "MeteringSubscriptionsOperations_list",
           "summary": "Lists subscriptions",
@@ -3805,7 +3806,7 @@
         },
         "post": {
           "tags": [
-            "Metering - Subscriptions"
+            "metering"
           ],
           "operationId": "MeteringSubscriptionsOperations_create",
           "summary": "Creates a subscription",
@@ -3887,7 +3888,7 @@
       "/v1/metering/{bucketId}/subscriptions/{subscriptionId}": {
         "patch": {
           "tags": [
-            "Metering - Subscriptions"
+            "metering", "subscriptions"
           ],
           "operationId": "MeteringSubscriptionsOperations_update",
           "summary": "Updates a subscription",
@@ -3970,7 +3971,7 @@
         },
         "get": {
           "tags": [
-            "Metering - Subscriptions"
+            "metering", "subscriptions"
           ],
           "operationId": "MeteringSubscriptionsOperations_read",
           "summary": "Gets a subscription",
@@ -4053,7 +4054,7 @@
         },
         "delete": {
           "tags": [
-            "Metering - Subscriptions"
+            "metering", "subscriptions"
           ],
           "operationId": "MeteringSubscriptionsOperations_delete",
           "summary": "Deletes a subscription",
@@ -4131,7 +4132,7 @@
       "/v1/metering/{bucketId}/subscriptions/{subscriptionId}/quotas": {
         "get": {
           "tags": [
-            "Metering - Quotas"
+            "metering", "subscriptions"
           ],
           "operationId": "MeteringQuotasOperations_get",
           "summary": "Get quotas",
