@@ -4383,8 +4383,7 @@
           "required": false,
           "description": "The format of the key to return.\n`none`: Key is completely hidden.\n`visible`: Key is completely visible.\n`masked`: Part of key suffix is visible.",
           "schema": {
-            "$ref": "#/components/schemas/Zuplo.ApiKeys.KeyFormat",
-            "example": "masked"
+            "$ref": "#/components/schemas/Zuplo.ApiKeys.KeyFormat"
           },
           "example": "masked"
         },
@@ -6797,8 +6796,6 @@
               "enum": [
                 "in-progress",
                 "success",
-                "error",
-                "success",
                 "error"
               ],
               "example": "success"
@@ -6906,8 +6903,6 @@
               "type": "string",
               "enum": [
                 "in-progress",
-                "success",
-                "error",
                 "success",
                 "error"
               ],
