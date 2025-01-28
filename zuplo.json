@@ -7138,7 +7138,7 @@
     },
     "servers": [
       {
-        "url": "https://dev.zuplo.com"
+        "url": "https://api.zuplo.com"
       }
     ]
   }
