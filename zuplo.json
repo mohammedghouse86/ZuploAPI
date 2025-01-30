@@ -1120,10 +1120,12 @@
               "api_key": []
             }
           ]
-        },
+        }
+      },
+      "/v1/api-keys/{bucketId}/consumers/": {
         "post": {
           "tags": [
-            "accounts", "key-buckets", "consumers"
+            "consumers"
           ],
           "operationId": "ApiKeyKeysService_create",
           "summary": "Creates an API key",
@@ -1211,6 +1213,7 @@
           ]
         }
       },
+
       "/v1/accounts/{accountName}/key-buckets/{bucketName}/consumers/{consumerName}/keys/$bulk": {
         "post": {
           "tags": [
