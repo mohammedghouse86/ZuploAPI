@@ -2987,7 +2987,7 @@
           ]
         }
       },
-      "/v1/deployments/{deploymentName}/$redeploy": {
+      "/v1/deployments/{deploymentName}/versions/latest/$redeploy": {
         "post": {
           "tags": [
             "deployments"
