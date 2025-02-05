@@ -1,0 +1,615 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Insecure Gov Data API",
+    "description": "API that provides fake user identity details linked to phones, cars, and banks.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://unified-api-ymxk.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/auth/token": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Generate access token",
+        "description": "Authenticates the user and generates an access token.",
+        "operationId": "login_for_access_token_auth_token_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": ["User Management"],
+        "summary": "Retrieve user profile",
+        "description": "Fetches user details based on user ID.",
+        "operationId": "get_user_profile_users__user_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/phones": {
+      "get": {
+        "tags": ["User Data"],
+        "summary": "Retrieve user phone subscriptions",
+        "description": "Returns the phone subscriptions linked to the current user.",
+        "operationId": "get_phones_phones_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PhoneDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/cars": {
+      "get": {
+        "tags": ["User Data"],
+        "summary": "Retrieve user car registrations",
+        "description": "Returns the cars registered under the current user.",
+        "operationId": "get_cars_cars_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/banks": {
+      "get": {
+        "tags": ["User Data"],
+        "summary": "Retrieve user bank accounts",
+        "description": "Returns the bank accounts associated with the current user.",
+        "operationId": "get_banks_banks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BankDetails"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/role": {
+      "patch": {
+        "tags": ["User Management"],
+        "summary": "Modify user role",
+        "description": "Allows admins to change user roles.",
+        "operationId": "update_user_role_users__user_id__role_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Id"
+            }
+          },
+          {
+            "name": "new_role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "New Role"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserRoleUpdateResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/phones/{phone_number}": {
+      "get": {
+        "tags": ["Phone Lookup"],
+        "summary": "Retrieve fake phone details",
+        "description": "Fetch fake phone subscription details and user identity based on the given phone number.",
+        "operationId": "get_phone_details_phones__phone_number__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "phone_number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Phone Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhoneLookupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/{plate_number}": {
+      "get": {
+        "tags": ["Car Lookup"],
+        "summary": "Retrieve fake car details",
+        "description": "Fetch fake car registration details and user identity based on the given plate number.",
+        "operationId": "get_car_details_cars__plate_number__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "plate_number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Plate Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CarLookupResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banks/{iban}": {
+      "get": {
+        "tags": ["Bank Lookup"],
+        "summary": "Retrieve fake bank details",
+        "description": "Fetch fake bank account details and user identity based on the given IBAN.",
+        "operationId": "get_bank_details_banks__iban__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "iban",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Iban"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BankOwnerDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "tags": ["API Metadata"],
+        "summary": "Export OpenAPI JSON",
+        "description": "Provides OpenAPI JSON schema for third-party integrations.",
+        "operationId": "get_openapi_json_openapi_json_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Token": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type"
+          }
+        },
+        "type": "object",
+        "required": ["access_token", "token_type"],
+        "title": "Token"
+      },
+      "UserLogin": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "title": "Password"
+          }
+        },
+        "type": "object",
+        "required": ["username", "password"],
+        "title": "UserLogin"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      },
+      "PhoneDetails": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "registration_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "emirate": {
+            "type": "string"
+          }
+        },
+        "title": "PhoneDetails"
+      },
+      "PhoneLookupResponse": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "phone_details": {
+            "$ref": "#/components/schemas/PhoneDetails"
+          }
+        },
+        "title": "PhoneLookupResponse"
+      },
+      "CarDetails": {
+        "type": "object",
+        "properties": {
+          "plate_number": {
+            "type": "string"
+          },
+          "emirate": {
+            "type": "string"
+          },
+          "registration_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "renewal_date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "title": "CarDetails"
+      },
+      "CarLookupResponse": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "car_details": {
+            "$ref": "#/components/schemas/CarDetails"
+          }
+        },
+        "title": "CarLookupResponse"
+      },
+      "BankDetails": {
+        "type": "object",
+        "properties": {
+          "iban": {
+            "type": "string",
+            "title": "IBAN"
+          },
+          "bank_name": {
+            "type": "string",
+            "title": "Bank Name"
+          },
+          "registration_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Registration Date"
+          }
+        },
+        "required": ["iban", "bank_name", "registration_date"],
+        "title": "BankDetails"
+      },
+      "BankOwnerDetails": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string",
+            "title": "Owner"
+          },
+          "id": {
+            "type": "string",
+            "title": "ID"
+          },
+          "bank_details": {
+            "$ref": "#/components/schemas/BankDetails"
+          }
+        },
+        "required": ["owner", "id", "bank_details"],
+        "title": "BankOwnerDetails"
+      },
+      "UserProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "title": "UserProfile"
+      },
+      "UserRoleUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "new_role": {
+            "type": "string"
+          }
+        },
+        "title": "UserRoleUpdateResponse"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
