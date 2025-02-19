@@ -821,21 +821,9 @@
           "summary": "Updates a consumer",
           "description": "Update the consumer with the matching consumer name.",
           "parameters": [
+            
             {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "example": "Bearer YOUR_KEY_HERE",
-              "schema": {
-                "type": "string"
-              },
-              "description": "The `Authorization` header is used to authenticate with the API using your API key. Value is of the format `Bearer YOUR_KEY_HERE`."
-            },
-            {
-              "$ref": "#/components/parameters/Zuplo.Common.AccountParams"
-            },
-            {
-              "$ref": "#/components/parameters/Zuplo.ApiKeys.BucketParams.bucketName"
+              "$ref": "#/components/parameters/Zuplo.ApiKeys.BucketParams.bucketId"
             },
             {
               "$ref": "#/components/parameters/Zuplo.ApiKeys.ConsumerParams.consumerName"
@@ -911,7 +899,7 @@
           },
           "security": [
             {
-              "api_key": []
+              "bearerAuth": []
             }
           ]
         },
