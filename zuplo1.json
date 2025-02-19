@@ -729,21 +729,9 @@
           "summary": "Gets a consumer",
           "description": "Gets a consumer given a bucket name and consumer name.",
           "parameters": [
+
             {
-              "name": "Authorization",
-              "in": "header",
-              "required": true,
-              "example": "Bearer YOUR_KEY_HERE",
-              "schema": {
-                "type": "string"
-              },
-              "description": "The `Authorization` header is used to authenticate with the API using your API key. Value is of the format `Bearer YOUR_KEY_HERE`."
-            },
-            {
-              "$ref": "#/components/parameters/Zuplo.Common.AccountParams"
-            },
-            {
-              "$ref": "#/components/parameters/Zuplo.ApiKeys.BucketParams.bucketName"
+              "$ref": "#/components/parameters/Zuplo.ApiKeys.BucketParams.bucketId"
             },
             {
               "$ref": "#/components/parameters/Zuplo.ApiKeys.ConsumerParams.consumerName"
@@ -821,7 +809,7 @@
           },
           "security": [
             {
-              "api_key": []
+              "bearerAuth": []
             }
           ]
         },
@@ -4294,6 +4282,15 @@
             "type": "string"
           }
         },
+        "Zuplo.ApiKeys.BucketParams.bucketId": {
+          "name": "bucketId",
+          "in": "path",
+          "required": true,
+          "description": "The id of the bucket. Zuplo automatically creates a bucket for your project. You can find it in youe Zuplo Portal under Settings > Project Information.",
+          "schema": {
+            "type": "string"
+          }
+        },
         "Zuplo.ApiKeys.ConsumerParams.consumerName": {
           "name": "consumerName",
           "in": "path",
@@ -7030,9 +7027,11 @@
         }
       },
       "securitySchemes": {
-        "api_key": {
-          "type": "http",
-          "scheme": "bearer"
+        "bearerAuth": {
+        "type": "http",
+        "in": "header",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
         }
       },
       "responses": {
